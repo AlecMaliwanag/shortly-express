@@ -11,8 +11,12 @@ public/dist
 # Icon must ends with two \r.
 Icon
 
+# keys
+digi-ocn-id_rsa
+digi-ocn-id_rsa.pub
 
-
+# git
+.gitignore
 
 # Floobits
 .floo
