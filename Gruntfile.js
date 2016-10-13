@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: ['public/client/*.js'],
-        dest: 'dist/build.js',
+        dest: 'public/dist/build.js',
       },
     },
 
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       /* eslint-disable */
       my_target: {
         files: {
-          'dist/build.min.js': ['dist/build.js']
+          'public/dist/build.min.js': ['public/dist/build.js']
         }
       /* eslint-enable */
       }
@@ -39,7 +39,9 @@ module.exports = function(grunt) {
 
     eslint: {
       target: [
-        // Add list of files to lint here
+        '*.js',
+        'app/**/*.js',
+        'public/**/*.js'
       ]
     },
 
@@ -92,7 +94,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'concat', 'uglify'
+    'eslint', 'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
