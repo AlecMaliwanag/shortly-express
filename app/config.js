@@ -1,7 +1,8 @@
 var path = require('path');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-//port number 27017
+
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/shortly');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));

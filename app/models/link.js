@@ -19,16 +19,25 @@ var mongoose = require('mongoose');
 
 var linksSchema = mongoose.Schema({
   url: String,
+  link: String,
   baseUrl: String,
   code: String,
   title: String,
-  visits: Number,
-  /*eslint-disable*/
-  created_at: Date, //this might not work
-  updated_at: Date
-  /*eslint-enable*/
+  visits: Number
+});
+var Link = mongoose.model('Link', linksSchema);
+var shorten = function(url) {
+  var shasum = crypto.createHash('sha1');
+  shasum.update(url);
+  return shasum.digest('hex').slice(0, 5);
+};
+
+linksSchema.pre('save', function(next) {
+  this.code = shorten(this.url);
+
+  next();
 });
 
-var Link = mongoose.model('Link', linksSchema);
+
 
 module.exports = Link;
