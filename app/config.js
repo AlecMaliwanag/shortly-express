@@ -2,20 +2,18 @@ var path = require('path');
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //port number 27017
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/shortly');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   // we're connected!
-  console.log('successful connection!');
+  console.log('successful connection to mongo!');
 });
 
-var urlSchema = new Schema({
-  
-});
-
+module.exports = db;
 
 // var knex = require('knex')({
+
 //   client: 'sqlite3',
 //   connection: {
 //     filename: path.join(__dirname, '../db/shortly.sqlite')

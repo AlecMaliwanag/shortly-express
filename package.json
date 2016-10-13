@@ -13,6 +13,7 @@
     "test": "grunt test",
     "lint": "eslint ./",
     "deploy": "grunt build && grunt deploy",
+    "run": "nodemon --debug server.js",
     "build": "grunt build"
   },
   "dependencies": {
